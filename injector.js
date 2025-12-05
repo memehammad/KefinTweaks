@@ -198,6 +198,12 @@
             css: null,
             dependencies: [],
             description: 'Modifies the behavior of the Jellyfin Enhanced Elsewhere functionality to add custom branding when items are not available on streaming services'
+        },        {
+            name: 'jellyseerrRequests',
+            script: 'jellyseerrRequests.js',
+            css: null,
+            dependencies: ['cardBuilder', 'localStorageCache', 'utils'],
+            description: 'Shows "Your Requests" section on home screen with media requested on Jellyseerr'
         },
         {
             name: 'backdropLeakFix',
