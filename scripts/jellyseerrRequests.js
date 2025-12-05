@@ -53,29 +53,17 @@
 
     /**
      * Get current Jellyfin username
-     * @returns {string|null} - Current user's username
+     * @returns {Promise<string|null>} - Current user's username
      */
-    function getCurrentJellyfinUsername() {
+    async function getCurrentJellyfinUsername() {
         try {
             // Get current user from Jellyfin API helper
-            const apiClient = window.ApiClient || window.Emby?.ApiClient;
-            if (apiClient) {
-                const user = apiClient.getCurrentUser();
+            const apiClient = window.ApiClient;
+            if (apiClient && apiClient.getCurrentUser) {
+                const user = await apiClient.getCurrentUser();
                 if (user && user.Name) {
+                    LOG('Found username from ApiClient:', user.Name);
                     return user.Name;
-                }
-            }
-
-            // Fallback: try to get from localStorage
-            const credentials = localStorage.getItem('jellyfin_credentials');
-            if (credentials) {
-                const parsed = JSON.parse(credentials);
-                const servers = parsed.Servers || [];
-                if (servers.length > 0 && servers[0].UserId) {
-                    // Try to get username from user data
-                    const userId = servers[0].UserId;
-                    // The actual username might be stored elsewhere
-                    LOG('Found user ID:', userId);
                 }
             }
 
@@ -98,7 +86,7 @@
             return [];
         }
 
-        const username = getCurrentJellyfinUsername();
+        const username = await getCurrentJellyfinUsername();
         if (!username) {
             WARN('Cannot fetch requests: Could not determine current username');
             return [];
@@ -126,14 +114,18 @@
             const data = await response.json();
             LOG('Received Jellyseerr response:', data);
 
-            // Filter requests by current user's jellyfinUsername in modifiedBy
+            // Filter requests by:
+            // 1. Current user's jellyfinUsername in modifiedBy
+            // 2. Status is "available" (status === 5)
             const allRequests = data.results || [];
             const userRequests = allRequests.filter(request => {
                 const modifiedBy = request.modifiedBy;
-                return modifiedBy && modifiedBy.jellyfinUsername === username;
+                const isUserRequest = modifiedBy && modifiedBy.jellyfinUsername === username;
+                const isAvailable = request.media && request.media.status === 5; // 5 = available
+                return isUserRequest && isAvailable;
             });
 
-            LOG(`Filtered ${userRequests.length} requests for user "${username}" from ${allRequests.length} total requests`);
+            LOG(`Filtered ${userRequests.length} available requests for user "${username}" from ${allRequests.length} total requests`);
 
             return userRequests;
         } catch (error) {
