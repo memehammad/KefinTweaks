@@ -484,7 +484,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 <p>Thanks so much for installing KefinTweaks!</p>
                 <p>KefinTweaks is not maintained by the Jellyfin team, and as a result you are encouraged to seek support from me directly.</p>
                 <p>Sadly, there is <i>currently</i> no place suitable for discussion of plugins built by community members or fan-made projects in the official Jellyfin Discord, so please visit the <a href="https://discord.gg/v7P9CAvCKZ" target="_blank" style="color: #00a4dc; text-decoration: underline;">Jellyfin Community Discord</a> to find me (username: HighImKevin) and other users who would be happy to help you out.</p>
-                <p>Please also feel free to report bugs and request features from the <a href="https://github.com/ranaldsgift/KefinTweaks/issues" target="_blank" style="color: #00a4dc; text-decoration: underline;">Issues</a> page. The strength of this plugin relies on awesome community members like you, so thanks for using KefinTweaks!</p>
+                <p>Please also feel free to report bugs and request features from the <a href="https://github.com/memehammad/KefinTweaks/issues" target="_blank" style="color: #00a4dc; text-decoration: underline;">Issues</a> page. The strength of this plugin relies on awesome community members like you, so thanks for using KefinTweaks!</p>
             `;
         } else {
             // Update message with refresh instruction
@@ -1243,7 +1243,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 let img = card.querySelector('img');
     
                 if (img) {
-                    img.src = 'https://raw.githubusercontent.com/ranaldsgift/KefinTweaks/refs/heads/main/logo.png';
+                    img.src = 'https://raw.githubusercontent.com/memehammad/KefinTweaks/refs/heads/main/logo.png';
                     img.style.width = 'auto';
                     img.style.height = '100%';
                     img.parentNode.style.background = 'linear-gradient(to bottom, #202020, #101010)';
@@ -1251,7 +1251,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                     img = document.createElement('div');
                     img.className = 'defaultCardBackground';
                     // give the gradient some color
-                    img.style.background = 'url(https://raw.githubusercontent.com/ranaldsgift/KefinTweaks/refs/heads/main/logo.png), linear-gradient(to bottom, #202020, #101010)';
+                    img.style.background = 'url(https://raw.githubusercontent.com/memehammad/KefinTweaks/refs/heads/main/logo.png), linear-gradient(to bottom, #202020, #101010)';
                     img.style.backgroundSize = 'contain';
                     img.style.backgroundPosition = 'center';
                     img.style.backgroundRepeat = 'no-repeat';
