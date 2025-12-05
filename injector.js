@@ -60,6 +60,7 @@
         watchlist: true,          // Watchlist functionality
         homeScreen: true,         // Custom home screen sections
         search: true,             // Enhanced search functionality
+        jellyseerrRequests: true, // Jellyseerr requests section
         headerTabs: true,         // Header tab enhancements
         customMenuLinks: true,    // Custom menu links functionality
         exclusiveElsewhere: true, // Exclusive elsewhere branding
