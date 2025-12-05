@@ -101,6 +101,8 @@
 
             const response = await fetch(endpoint, {
                 method: 'GET',
+                mode: 'cors', // Explicitly request CORS
+                credentials: 'omit', // Don't send cookies
                 headers: {
                     'X-Api-Key': config.apiKey,
                     'Content-Type': 'application/json'
@@ -118,10 +120,31 @@
             // 1. Current user's jellyfinUsername in modifiedBy
             // 2. Status is "available" (status === 5)
             const allRequests = data.results || [];
+
+            // Debug logging
+            LOG(`Current Jellyfin username: "${username}"`);
+            LOG(`Total requests from API: ${allRequests.length}`);
+
+            if (allRequests.length > 0) {
+                LOG('Sample request data:', allRequests[0]);
+                LOG('Sample modifiedBy data:', allRequests[0]?.modifiedBy);
+                LOG('Sample media status:', allRequests[0]?.media?.status);
+            }
+
             const userRequests = allRequests.filter(request => {
                 const modifiedBy = request.modifiedBy;
-                const isUserRequest = modifiedBy && modifiedBy.jellyfinUsername === username;
+                const jellyfinUsername = modifiedBy?.jellyfinUsername;
+                const isUserRequest = jellyfinUsername === username;
                 const isAvailable = request.media && request.media.status === 5; // 5 = available
+
+                // Debug each request
+                if (!isUserRequest) {
+                    LOG(`Request ${request.id}: Username mismatch - jellyseerr: "${jellyfinUsername}", current: "${username}"`);
+                }
+                if (!isAvailable) {
+                    LOG(`Request ${request.id}: Status not available - status: ${request.media?.status}`);
+                }
+
                 return isUserRequest && isAvailable;
             });
 
@@ -130,6 +153,8 @@
             return userRequests;
         } catch (error) {
             ERR('Error fetching Jellyseerr requests:', error);
+            ERR('This is likely a CORS issue. Please check the troubleshooting section in the documentation.');
+            ERR('You may need to configure Jellyseerr to allow requests from your Jellyfin domain.');
             return [];
         }
     }
