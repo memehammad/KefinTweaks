@@ -11,8 +11,8 @@
     let versionsCache = null;
 
     // jsDelivr URL patterns
-    const JSDELIVR_BASE = 'https://cdn.jsdelivr.net/gh/ranaldsgift/KefinTweaks';
-    const GITHUB_REPO = 'ranaldsgift/KefinTweaks';
+    const JSDELIVR_BASE = 'https://cdn.jsdelivr.net/gh/memehammad/KefinTweaks';
+    const GITHUB_REPO = 'memehammad/KefinTweaks';
     const GITHUB_API_RELEASES = `https://api.github.com/repos/${GITHUB_REPO}/releases`;
 
     // Check if user is admin
