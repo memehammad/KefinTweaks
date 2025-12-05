@@ -27,46 +27,26 @@
     const CACHE_KEY = 'jellyseerr_user_requests';
 
     /**
-     * Get Jellyseerr configuration from localStorage (set by Jellyfin Enhanced plugin)
+     * Get Jellyseerr configuration from KefinTweaksConfig
      * @returns {Object|null} - Jellyseerr config with url and apiKey, or null if not found
      */
     function getJellyseerrConfig() {
         try {
-            // Try common localStorage keys that Jellyfin Enhanced might use
-            const possibleKeys = [
-                'jellyfinEnhanced_jellyseerr',
-                'jellyseerr_config',
-                'JellyfinEnhanced_jellyseerr',
-                'jellyseerrConfig'
-            ];
+            // Get config from KefinTweaksConfig
+            const config = window.KefinTweaksConfig?.jellyseerrRequests;
 
-            for (const key of possibleKeys) {
-                const stored = localStorage.getItem(key);
-                if (stored) {
-                    try {
-                        const config = JSON.parse(stored);
-                        if (config.url && config.apiKey) {
-                            LOG('Found Jellyseerr config in localStorage:', key);
-                            return config;
-                        }
-                    } catch (e) {
-                        // Try next key
-                    }
-                }
+            if (config && config.url && config.apiKey) {
+                LOG('Found Jellyseerr config in KefinTweaksConfig');
+                return {
+                    url: config.url,
+                    apiKey: config.apiKey
+                };
             }
 
-            // Also check if it's stored as plain values
-            const url = localStorage.getItem('jellyseerr_url');
-            const apiKey = localStorage.getItem('jellyseerr_apiKey');
-            if (url && apiKey) {
-                LOG('Found Jellyseerr config as separate values');
-                return { url, apiKey };
-            }
-
-            WARN('No Jellyseerr configuration found in localStorage');
+            WARN('No Jellyseerr configuration found in KefinTweaksConfig');
             return null;
         } catch (error) {
-            ERR('Error reading Jellyseerr config from localStorage:', error);
+            ERR('Error reading Jellyseerr config from KefinTweaksConfig:', error);
             return null;
         }
     }
