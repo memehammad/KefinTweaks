@@ -1,7 +1,8 @@
 window.KefinTweaksDefaultConfig = {
   "kefinTweaksRoot": "",
   "scripts": {
-    "homeScreen": true,
+    "homeScreen": true,    
+    "jellyseerrRequests": true,
     "search": true,
     "watchlist": true,
     "headerTabs": true,
@@ -388,6 +389,16 @@ window.KefinTweaksDefaultConfig = {
   },
   "exclusiveElsewhere": {
     "hideServerName": false
+  },  
+  "jellyseerrRequests": {
+    "enabled": true,
+    "name": "Your Requests",
+    "itemLimit": 16,
+    "sortOrder": "DateAdded",
+    "sortOrderDirection": "Descending",
+    "cardFormat": "Poster",
+    "order": 25,
+    "cacheTime": 300000
   },
   "search": {
     "enableJellyseerr": false
