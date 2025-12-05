@@ -980,6 +980,7 @@
             { key: 'homeScreen', label: 'Enhanced Home Screen', desc: 'Add custom home screen sections and a "discovery engine" to your Home Page. Create sections based on Genre, Tags, Playlists, Collections or Search Terms for specific Item Types. Use the "Spotlight" feature to highlight specific sections with an image carousel/slideshow.' },
             { key: 'search', label: 'Enhanced Search', desc: 'Search speed is improved by searching less content types by default. Provides options to specify which content type to search. Fully compatible with both the Jellysearch Search from Jellyfin Enhanced plugin and the Meilisearch plugin.' },
             { key: 'infiniteScroll', label: 'Infinite Scroll', desc: 'Adds infinite scrolling to the library pages for Movies and TV' },
+            { key: 'jellyseerrRequests', label: 'Jellyseerr Requests', desc: 'Displays a "Your Requests" section on the home screen showing media you\'ve requested on Jellyseerr. Requires Jellyfin Enhanced plugin with Jellyseerr configured.' },
             { key: 'removeContinue', label: 'Remove Continue', desc: 'Adds the ability to remove items from the Continue Watching sections' },
             { key: 'skinManager', label: 'Skin Manager', desc: 'Skin selection and management - adds skin dropdown to header and display preferences' },
             { key: 'headerTabs', label: 'Header Tabs', desc: 'Allows direct navigation to specific Tab sections of a given library page. Full support for default Jellyfin landing pages.' },
