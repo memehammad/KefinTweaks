@@ -230,7 +230,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
             return { sourceType: 'github', version: LATEST_RELEASE_NAME };
         }
 
-        const match = url.match(/cdn\.jsdelivr\.net\/gh\/ranaldsgift\/KefinTweaks@([^\/]+)\//);
+        const match = url.match(/cdn\.jsdelivr\.net\/gh\/memehammad\/KefinTweaks@([^\/]+)\//);
         
         if (!match) {
             return { sourceType: 'custom', version: null };
@@ -748,7 +748,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 } else if (sourceInfo.version === LATEST_RELEASE_NAME) {
                     // Fetch the actual latest version number
                     try {
-                        const response = await fetch('https://api.github.com/repos/ranaldsgift/KefinTweaks/releases/latest');
+                        const response = await fetch('https://api.github.com/repos/memehammad/KefinTweaks/releases/latest');
                         if (response.ok) {
                             const data = await response.json();
                             const versionNumber = data.tag_name.replace(/^v/, '');
@@ -917,7 +917,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 } else if (sourceInfo.version === LATEST_RELEASE_NAME) {
                     // Fetch the actual latest version number
                     try {
-                        const response = await fetch('https://api.github.com/repos/ranaldsgift/KefinTweaks/releases/latest');
+                        const response = await fetch('https://api.github.com/repos/memehammad/KefinTweaks/releases/latest');
                         if (response.ok) {
                             const data = await response.json();
                             const versionNumber = data.tag_name.replace(/^v/, '');
@@ -1090,7 +1090,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 } else if (sourceInfo.version === LATEST_RELEASE_NAME) {
                     // Fetch the actual latest version number
                     try {
-                        const response = await fetch('https://api.github.com/repos/ranaldsgift/KefinTweaks/releases/latest');
+                        const response = await fetch('https://api.github.com/repos/memehammad/KefinTweaks/releases/latest');
                         if (response.ok) {
                             const data = await response.json();
                             const versionNumber = data.tag_name.replace(/^v/, '');
